@@ -1,11 +1,13 @@
-function isEmpty(obj) {
-    let i = 0;
-    for(let key in obj) {
-        i++;
+function sumProperties(obj) {
+    let sum = 0;
+    for( let prop in obj ) {
+        sum += obj[prop];
     }
-    i = i > 0 ? false : true;
-    return i;
+    return sum;
 }
 
-let user = {};
-alert(isEmpty(user));
+let salaries = {
+    // 'John': 23,
+    // 'Daniel': 12
+}
+console.log(sumProperties(salaries));
