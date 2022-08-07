@@ -1,26 +1,18 @@
-function multiplyNumeric(obj) {
-    for( let prop in obj ) {
-
-        if( Number.isInteger( +obj[prop] ) ) {
-            obj[prop] *= 2;
-        }
+"use strict";
+let calculator = {
+    read() {
+        this.firstNumber = +prompt('Введите первое число', '');
+        this.secondNumber = +prompt('Введите второе число', '');
+    },
+    sum() {
+        let result = this.firstNumber + this.secondNumber;
+        return result;
+    },
+    mul() {
+        let result = this.firstNumber * this.secondNumber;
+        return result;
     }
-}
 
-// function multiplyNumeric(obj) {
-//     for( let prop in obj ) {
-//         obj[prop] = (+obj[prop] === Number) ? obj[prop] *= 2 : obj[prop];
-//     }
-// }
-let num = {
-    width: 320,
-    height: '-1',
-    title: 'My menu'
 }
-multiplyNumeric(num);
-for( let prop in num ) {
-    console.log(num[prop]);
-}
-
-// let testVariable = true
-// console.log(+testVariable);
+calculator.read();
+console.log( calculator.sum(), calculator.mul() );
