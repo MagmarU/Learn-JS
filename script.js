@@ -1,13 +1,26 @@
-function sumProperties(obj) {
-    let sum = 0;
+function multiplyNumeric(obj) {
     for( let prop in obj ) {
-        sum += obj[prop];
+
+        if( Number.isInteger( +obj[prop] ) ) {
+            obj[prop] *= 2;
+        }
     }
-    return sum;
 }
 
-let salaries = {
-    // 'John': 23,
-    // 'Daniel': 12
+// function multiplyNumeric(obj) {
+//     for( let prop in obj ) {
+//         obj[prop] = (+obj[prop] === Number) ? obj[prop] *= 2 : obj[prop];
+//     }
+// }
+let num = {
+    width: 320,
+    height: '-1',
+    title: 'My menu'
 }
-console.log(sumProperties(salaries));
+multiplyNumeric(num);
+for( let prop in num ) {
+    console.log(num[prop]);
+}
+
+// let testVariable = true
+// console.log(+testVariable);
