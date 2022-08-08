@@ -1,18 +1,20 @@
 "use strict";
-let calculator = {
-    read() {
-        this.firstNumber = +prompt('Введите первое число', '');
-        this.secondNumber = +prompt('Введите второе число', '');
+let ladder = {
+    step: 0,
+    up() {
+        this.step++;
+        return this;
     },
-    sum() {
-        let result = this.firstNumber + this.secondNumber;
-        return result;
+    down() {
+        this.step--;
+        return this;
     },
-    mul() {
-        let result = this.firstNumber * this.secondNumber;
-        return result;
+    showStep: function() {
+        console.log( this.step );
+        return this;
     }
 
-}
-calculator.read();
-console.log( calculator.sum(), calculator.mul() );
+};
+
+ladder.up().up().up().down().showStep();
+
