@@ -21,6 +21,3 @@ multiplyNumeric(num);
 for( let prop in num ) {
     console.log(num[prop]);
 }
-
-// let testVariable = true
-// console.log(+testVariable);
