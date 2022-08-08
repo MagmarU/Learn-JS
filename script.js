@@ -1,20 +1,8 @@
 "use strict";
-let ladder = {
-    step: 0,
-    up() {
-        this.step++;
-        return this;
+
+function Calculator() {
+    this.read: () {
+        this.firstNumber = +prompt('Введите первое число: ', '');
+        this.secondNuumber = +prompt('Введите второе число: ','');
     },
-    down() {
-        this.step--;
-        return this;
-    },
-    showStep: function() {
-        console.log( this.step );
-        return this;
-    }
-
-};
-
-ladder.up().up().up().down().showStep();
-
+}
