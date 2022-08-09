@@ -1,8 +1,9 @@
 "use strict";
+let id = Symbol("id");
+let user = {
+  [id] : 1
+};
 
-let user = {};
-
-console.log(user.name);
-console.log(user);
-console.log(user?.name);
-alert(user?.name.surname);
+for( let prop in user ) {
+  console.log( user[prop] );
+}
