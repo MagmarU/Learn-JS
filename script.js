@@ -1,11 +1,8 @@
 "use strict";
-let User = function() {
-    this.name = "Вася";
-    this.isAdmin = false;
-  
-  };
 
-let users = new User();
-for( let prop in users ) {
-    console.log( users, users[prop] );
-}
+let user = {};
+
+console.log(user.name);
+console.log(user);
+console.log(user?.name);
+alert(user?.name.surname);
