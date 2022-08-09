@@ -1,19 +1,11 @@
 "use strict";
+let User = function() {
+    this.name = "Вася";
+    this.isAdmin = false;
+  
+  };
 
-function Calculator() {
-    this.read = function() {
-        this.firstNumber = +prompt('Введите первое число: ', '');
-        this.secondNuumber = +prompt('Введите второе число: ','');
-    };
-    this.sum = function() {
-        return this.firstNumber + this.secondNuumber;
-    };
-    this.mul = function() {
-        return this.firstNumber * this.secondNuumber;
-    };
+let users = new User();
+for( let prop in users ) {
+    console.log( users, users[prop] );
 }
-
-let calculator = new Calculator();
-calculator.read();
-console.log( "Sum = " + calculator.sum() );
-console.log( "Mul = " + calculator.mul() );
