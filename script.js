@@ -1,19 +1,11 @@
-"use strict";
-let id = Symbol("id");
-let user = {
-  [id]: 1,
-  [id]: 2,
-  name: 'John',
-  name: 'Daniel',
-};
+function readNumber() {
+    let numberWrite;
+    do {
+        numberWrite = prompt( "", '' );
+    } while ( numberWrite == '' );
+    // if (numberWrite === null || numberWrite === '') return null;
+    
+    return numberWrite;
+}
 
-console.log(Symbol.for("id"));
-console.log(user[id], user.name);
-
-// let id = Symbol("id");
-// let user = {
-//   [id]: 1,
-// };
-
-// id = null;
-// console.log(user[id]);
+console.log(readNumber());
