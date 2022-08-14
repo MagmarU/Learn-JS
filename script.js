@@ -1,11 +1,6 @@
-function readNumber() {
-    let numberWrite;
-    do {
-        numberWrite = prompt( "", '' );
-    } while ( numberWrite == '' );
-    // if (numberWrite === null || numberWrite === '') return null;
-    
-    return numberWrite;
+function randomInteger( min, max ) {
+    max = Math.random() * ( max + 1 - min );
+    return Math.floor( min + max );
 }
 
-console.log(readNumber());
+console.log( randomInteger( 1, 5 ) );
