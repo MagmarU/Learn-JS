@@ -1,63 +1,20 @@
-function getMaxSubSum( arr ) {
-    let sum = 0;
-    let maxSum = 0;
-    for( let arrElement of arr ) {
-        if( arrElement < 0 ) {
-            sum = 0;
-            continue;
-        }
-        if( sum == 0 ) sum = arrElement;
-        if( arrElement > sum ) sum += arrElement;
-        if( maxSum < sum ) maxSum = sum;
+function SumInBinaryType( num1, num2 ) {
+    let intSum = +num1 + +num2;
+    let binNumber = '';
+    let result = intSum;
+    // while( true ) {
+    //     if( intSum % 2 != 0 ){
+    //         binNumber += 1;
+    //     }
+    //     } else{
+    //         binNumber += 0;
+    //     }
+    // }
+    for( let i = 0; i < intSum; i++ ) {
+        result = result % 2;
+        console.log( result );
     }
-    return maxSum;
+    return binNumber;
 }
 
-// function getMaxSubSum(arr) {
-
-//     // отсекаем отрицательные числа по краям массива
-//     while(arr[0] <= 0 || arr[arr.length - 1] <= 0) {
-//     arr[0] <= 0 ? arr.shift() : arr.pop();
-//     }
-    
-//     let maxSum = 0;
-//     let num = 0;
-    
-//     // индексы нужны для дальнейшего вывода подмассива
-//     let index1 = 0;
-//     let index2 = 0;
-    
-//     for(let i = 0; i < arr.length; i++) {
-//     num = arr[i];
-    
-//     if(num > maxSum) {
-//     maxSum = num;
-//     index1 = i;
-//     }
-    
-//     for(let j = i + 1; j < arr.length; j++) {
-//     num += arr[j];
-    
-//     if(num > maxSum) {
-//     maxSum = num;
-//     index1 = i;
-//     index2 = j;
-//     }
-//     }
-//     }
-    
-//     // определяем переменную для подмассива
-//     let newArr = [];
-    
-//     for(let i = index1; i<= index2; i++) {
-//     newArr.push(arr[i])
-//     }
-    
-//     return `subArray = ${newArr}, maxSubSum = ${maxSum}`
-// }
-    
-
-let arr = [-1, 2, 3, -9];
-
-
-console.log( getMaxSubSum( arr ) );
+console.log( SumInBinaryType( 5, 12 ) );
