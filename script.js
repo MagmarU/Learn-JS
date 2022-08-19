@@ -1,20 +1,15 @@
-function SumInBinaryType( num1, num2 ) {
-    let intSum = +num1 + +num2;
-    let binNumber = '';
-    let result = intSum;
-    // while( true ) {
-    //     if( intSum % 2 != 0 ){
-    //         binNumber += 1;
-    //     }
-    //     } else{
-    //         binNumber += 0;
-    //     }
-    // }
-    for( let i = 0; i < intSum; i++ ) {
-        result = result % 2;
-        console.log( result );
+function reverse( str ) {
+    let result = new Array(str.length - 1);
+    let itteration = str.length - 1;
+    for( let char of str ) {
+        result[itteration] = char;
+        itteration--; 
     }
-    return binNumber;
+    let reverseStr = '';
+    for( let key of result ) {
+        reverseStr += key;
+    }
+    return reverseStr;
 }
 
-console.log( SumInBinaryType( 5, 12 ) );
+console.log( reverse( 'cba' ) );
