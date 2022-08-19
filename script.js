@@ -7,7 +7,7 @@ function getMaxSubSum( arr ) {
             continue;
         }
         if( sum == 0 ) sum = arrElement;
-        if( arrElement < sum ) sum += arrElement;
+        if( arrElement > sum ) sum += arrElement;
         if( maxSum < sum ) maxSum = sum;
     }
     return maxSum;
@@ -57,8 +57,7 @@ function getMaxSubSum( arr ) {
 // }
     
 
-
-let arr = [100, -9, 2, -3, 5];
+let arr = [-1, 2, 3, -9];
 
 
 console.log( getMaxSubSum( arr ) );
