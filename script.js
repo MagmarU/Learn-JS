@@ -1,15 +1,19 @@
-function reverse( str ) {
-    let result = new Array(str.length - 1);
-    let itteration = str.length - 1;
+function inversion( str ) {
+    let result = '';
     for( let char of str ) {
-        result[itteration] = char;
-        itteration--; 
+        switch ( char ) {
+            case 'a':
+                result += 'b';
+                break;
+            case 'b':
+                result += 'a';
+                break;
+            default:
+                result += 'c';
+                break;
+        }
     }
-    let reverseStr = '';
-    for( let key of result ) {
-        reverseStr += key;
-    }
-    return reverseStr;
+    return result;
 }
 
-console.log( reverse( 'cba' ) );
+console.log( inversion( 'aaabcccbaaa' ) );
