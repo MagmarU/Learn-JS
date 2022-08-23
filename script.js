@@ -1,8 +1,9 @@
-function deleteDash( str ) {
-  let arr = str.split( '-' );
-  let newArr = arr.map( ( item, index ) => index == 0 ? item : item[0].toUpperCase() + item.slice(1) );
-  let result = newArr.join('');
-  return result;
+function filterRange( arr, a, b ) {
+  let result = arr.filter( item => item >= a && item <= b);
+  console.log( result );
 }
 
-console.log( deleteDash( 'hel-lo' ) );
+let arr = [5, 3, 8, 1];
+console.log( arr );
+
+filterRange( arr, 1, 4 );
