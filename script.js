@@ -1,8 +1,8 @@
-function roundToNext5(n){
-    while( n % 5 != 0 ) {
-        n += 1;
-    }
-    return n;
+function deleteDash( str ) {
+  let arr = str.split( '-' );
+  let newArr = arr.map( ( item, index ) => index == 0 ? item : item[0].toUpperCase() + item.slice(1) );
+  let result = newArr.join('');
+  return result;
 }
 
-console.log( roundToNext5( 12 ) );
+console.log( deleteDash( 'hel-lo' ) );
