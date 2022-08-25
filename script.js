@@ -1,9 +1,27 @@
-function filterRange( arr, a, b ) {
-  let result = arr.filter( item => item >= a && item <= b);
-  console.log( result );
+function Calculator() {
+  this.methods = {
+    '+': ( a, b ) => +a + +b,
+    '-': ( a, b ) => a - b
+  };
+
+  this.calculate = ( str ) => {
+    let arr = str.split(' ');
+
+    if (!this.methods[ arr[1] ] || isNaN( arr[0] ) || isNaN( arr[2] ) ) {
+      return NaN;
+    }
+
+    return this.methods[arr[1]]( arr[0], arr[2] );
+  };
+
+  this.addMethod = ( name, func ) => {
+    this.methods[name] = func;
+  };
+
 }
 
-let arr = [5, 3, 8, 1];
-console.log( arr );
+let calc = new Calculator;
+console.log( calc.calculate( '2 + 4' ) );
 
-filterRange( arr, 1, 4 );
+calc.addMethod( '*', ( a, b ) => a * b );
+console.log( calc.calculate( '2 * 4' ) );
