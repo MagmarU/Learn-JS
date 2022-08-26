@@ -1,17 +1,12 @@
-let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
-let petya = { name: "Петя", surname: "Иванов", id: 2 };
-let masha = { name: "Маша", surname: "Петрова", id: 3 };
+function sortByAge( arr ) {
+  arr.sort( function( a, b ) { return a.age - b.age; });
+  return arr;
+}
+
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
 
 let arr = [ vasya, petya, masha ];
 
-let usersMapped = arr.map( item => ({
-
-  fullName: `${item.name} ${item.surname}`,
-  id: item.id
-}
-));
-
-
-for( let prop in usersMapped ) {
-  console.log( usersMapped[prop].id );
-}
+console.log( sortByAge( arr ) );
