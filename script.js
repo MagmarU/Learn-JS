@@ -1,27 +1,17 @@
-function Calculator() {
-  this.methods = {
-    '+': ( a, b ) => +a + +b,
-    '-': ( a, b ) => a - b
-  };
+let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+let petya = { name: "Петя", surname: "Иванов", id: 2 };
+let masha = { name: "Маша", surname: "Петрова", id: 3 };
 
-  this.calculate = ( str ) => {
-    let arr = str.split(' ');
+let arr = [ vasya, petya, masha ];
 
-    if (!this.methods[ arr[1] ] || isNaN( arr[0] ) || isNaN( arr[2] ) ) {
-      return NaN;
-    }
+let usersMapped = arr.map( item => ({
 
-    return this.methods[arr[1]]( arr[0], arr[2] );
-  };
-
-  this.addMethod = ( name, func ) => {
-    this.methods[name] = func;
-  };
-
+  fullName: `${item.name} ${item.surname}`,
+  id: item.id
 }
+));
 
-let calc = new Calculator;
-console.log( calc.calculate( '2 + 4' ) );
 
-calc.addMethod( '*', ( a, b ) => a * b );
-console.log( calc.calculate( '2 * 4' ) );
+for( let prop in usersMapped ) {
+  console.log( usersMapped[prop].id );
+}
