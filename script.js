@@ -1,33 +1,11 @@
-function shuffle( arr ) {
-  let newArr = new Array( arr.length );
-  // let rndNum, max;
-  let max = arr.length - 1;
-  for( let i = 0; i < newArr.length; i++ ) {
-    let max = arr.length - 1;
-    let rndNum = Math.floor( Math.random() * ( max + 1 ) );
-    newArr[ i ] = arr[ rndNum ];
-    // newArr.push( arr[ rndNum ] );
-    arr.splice( rndNum, 1 );
-    
-  }
-  return newArr;
+function getAverageAge( arr ) {
+  return arr.reduce( ( countAge, item ) => countAge + item.age, 0 ) / arr.length;
 }
 
-let count = {
-  '123': 0,
-  '132': 0,
-  '213': 0,
-  '231': 0,
-  '321': 0,
-  '312': 0
-};
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 29 };
 
-for (let i = 0; i < 1000000; i++) {
-  let array = [1, 2, 3];
-  count[shuffle(array).join('')]++;
-}
+let arr = [ vasya, petya, masha ];
 
-// показать количество всех возможных вариантов
-for (let key in count) {
-  console.log(`${key}: ${count[key]}`);
-}
+console.log( getAverageAge( arr ) );
