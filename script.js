@@ -1,12 +1,16 @@
-function filterRangeInPlace( arr, a, b ) {
-  for( let item in arr ) {
-    if( arr[ item ] < a || arr[ item ] > b ) {
-      console.log( arr[ item ] );
-      arr.splice( item, 1 );
-    }
-  }
+function groupById( users ) {
+    return users.reduce( ( resultObj, item ) => { 
+        resultObj[item.id] = item;
+        return resultObj;
+    } , {} );
 }
-let arr = [5, 3, 8, 1];
 
-filterRangeInPlace( arr, 1, 4 );
-console.log( arr );
+let users = [
+    {id: 'john', name: "John Smith", age: 20},
+    {id: 'ann', name: "Ann Smith", age: 24},
+    {id: 'pete', name: "Pete Peterson", age: 31},
+  ];
+  
+  let usersById = groupById(users);
+
+  console.log( usersById );
