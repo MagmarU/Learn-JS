@@ -1,41 +1,39 @@
-// let range = {
-//     from: 1,
-//     to: 5
-// };
+// function aclean( arr ) {
+//     let res = [];
+//     let resultArr = arr.map( ( element, index, array ) => {
+//         return ( ( array[index].toLowerCase().split('') ).sort() ).join('');
+//     });
 
-// range[Symbol.iterator] = function() {
-//     return {
-//         current: this.from,
-//         last: this.to,
+//     let set = new Set( resultArr );
 
-//         next() {
-//             if( this.current <= this.last ) {
-//                 return { done: false, value: this.current++};
-//             } else {
-//                 return { done: true };
-//             }
-//         }
+    
+//     for( let value of set ) {
+//         res.push( arr[ resultArr.indexOf( value ) ] );
 //     }
+
+//     return res;
 // }
 
-let range = {
-    from: 1,
-    to: 5,
-    [Symbol.iterator]() {
-        this.current = this.from;
-        return this;
-    },
 
-    next() {
-        if (this.current <= this.to) {
-            return { done: false, value: this.current++ };
-        } else {
-            return { done: true };
-        }
+// let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+// console.log( aclean( arr ) );
+
+
+
+function aclean( arr ) {
+    let resultArr = new Map();
+
+    for( let element of arr ) {
+        resultArr.set( element.toLowerCase().split('').sort().join(''), element );
     }
-};
+
+    return resultArr.values();
+}
+
+let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
 
-for (let prop of range) {
-    console.log(prop);
+for( let i = 0; i < 10000; i++ ){
+    console.log( aclean( arr ) );
 }
