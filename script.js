@@ -1,9 +1,15 @@
-let map = new Map();
+let messages = [
+    {text: "Hello", from: "John"},
+    {text: "How goes?", from: "John"},
+    {text: "See you soon", from: "Alice"}
+  ];
 
-map.set( "name", "John" );
+let unReadMessage = new WeakSet();
 
-let keys = Array.from( map.keys() );
 
-keys.push( "more" );
-
-console.log( keys );
+for( let prop of messages ) {
+    if( !unReadMessage.has( prop ) ) {
+        unReadMessage.add( prop );
+    }
+    console.log( unReadMessage.has( prop ) );
+}
