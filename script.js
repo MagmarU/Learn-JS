@@ -1,11 +1,9 @@
-function sumSalaries( salaries ) {
-    return Object.values( salaries ).reduce( ( iterator, item ) => item + iterator, 0 );
-}
-let salaries = {
-    "John": 100,
-    "Pete": 300,
-    "Mary": 250
-  };
-  
+function getWeekDay( date ) {
+    let Days = [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
-console.log( sumSalaries( salaries ) );
+    return Days[ date.getDay() ];
+}
+
+let date = new Date(2012, 0, 3);
+
+console.log( getWeekDay( date ) );
