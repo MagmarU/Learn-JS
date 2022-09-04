@@ -1,9 +1,10 @@
-function getLocalDay( date ) {
-    let Days = [ ['Вс', 7], ['Пн', 1], ['Вт', 2], ['Ср', 3], ['Чт', 4], ['Пт', 5], ['Сб', 6]];
-    let [ day, dayNumber ] = Days[ date.getDay() ];
-    return dayNumber;
+function getDateAgo( date, days ) {
+    
+    let resultDate = new Date( date );
+    resultDate.setDate( resultDate.getDate() - days );
+    return resultDate.getDate();
 }
 
-let date = new Date(2012, 0, 1);
 
-console.log( getLocalDay( date ) );
+let date = new Date(2015, 0, 2);
+console.log( getDateAgo(date, 2) );
