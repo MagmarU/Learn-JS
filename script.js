@@ -1,10 +1,6 @@
-function getDateAgo( date, days ) {
-    
-    let resultDate = new Date( date );
-    resultDate.setDate( resultDate.getDate() - days );
+function getLastDayOfMonth( year, month ) {
+    let resultDate = new Date( year, ++month, 0 )
     return resultDate.getDate();
 }
 
-
-let date = new Date(2015, 0, 2);
-console.log( getDateAgo(date, 2) );
+console.log( getLastDayOfMonth( 2012, 10 ) );
