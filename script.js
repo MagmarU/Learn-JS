@@ -1,9 +1,9 @@
-function getWeekDay( date ) {
-    let Days = [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-
-    return Days[ date.getDay() ];
+function getLocalDay( date ) {
+    let Days = [ ['Вс', 7], ['Пн', 1], ['Вт', 2], ['Ср', 3], ['Чт', 4], ['Пт', 5], ['Сб', 6]];
+    let [ day, dayNumber ] = Days[ date.getDay() ];
+    return dayNumber;
 }
 
-let date = new Date(2012, 0, 3);
+let date = new Date(2012, 0, 1);
 
-console.log( getWeekDay( date ) );
+console.log( getLocalDay( date ) );
