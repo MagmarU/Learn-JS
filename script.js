@@ -1,10 +1,7 @@
-function removeAnchor( str ){
-  return str.split('#')[0];
-  // for( let char in str ) {
-  //   if( str[ char ] == '#' ) return str.slice( 0, char );
-  // }
-  // return str;
+function digPow( n, p ) {
+  // let arr = n.toString().split('');
+  let result = n.toString().split('').reduce( ( sum, item ) => sum + Math.pow( item, p++ ), 0 );
+  return result % n ? -1 : result / n;
 }
 
-let str = "www.codewars.com#about";
-console.log( removeAnchor( str ) );
+console.log( digPow( 46288, 3 ) );
