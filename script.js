@@ -1,17 +1,10 @@
-let room = {
-    number: 23
-  };
-  
-  let meetup = {
-    title: "Совещание",
-    occupiedBy: [{name: "Иванов"}, {name: "Петров"}],
-    place: room
-  };
-  
-  // цикличные ссылки
-  room.occupiedBy = meetup;
-  meetup.self = meetup;
-  
-  console.log( JSON.stringify( meetup, function replacer( key, value ) {
-    return ( ( ( key == 'occupiedBy' && this != meetup) || key == 'self' ) ? undefined : value );
-  }, 1));
+function removeAnchor( str ){
+  return str.split('#')[0];
+  // for( let char in str ) {
+  //   if( str[ char ] == '#' ) return str.slice( 0, char );
+  // }
+  // return str;
+}
+
+let str = "www.codewars.com#about";
+console.log( removeAnchor( str ) );
