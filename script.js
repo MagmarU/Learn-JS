@@ -1,12 +1,35 @@
-function findUnique( arr ) {
-  if( arr[ 0 ] == arr[ 1 ] ) {
-    return arr.find( item => item != arr[ 0 ] );
-  } else if( arr[0] == arr[2] ) {
-    return arr[1];
-  } else{
-    return arr[ 0 ];
-  }
+// function countCams( str ) {
+//   let [ countLeftCar, countRightCar, countCam ] = [ 0, 0, 0 ];
+//   let result = 0;
+//   for( let char of str ) {
+//     if( char == '.' ){
+//       countCam++;
+//       result += countLeftCar + countRightCar;
+//     } else if( char == '<' ) {
+//       countLeftCar++;
+//     }
+//     else {
+//       countRightCar++;
+//     }
+//   }
+//   return result;
+// }
+
+function countPhotos( str ) {
+  return countCar( str, '>' ) + countCar( [...str].reverse(), '<' );
 }
 
-let arr = [ 1, 1, 1, 2, 1, 1 ];
-console.log( findUnique( arr ) );
+function countCar( road, car ) {
+  let [ result, countCar ] = [ 0, 0 ];
+  for( let char of road ) {
+    if( char == '.' ) {
+      result += countCar;
+    } else if( char == car ) {
+      countCar++;
+    }
+  }
+  return result;
+}
+
+
+console.log( countPhotos( '>>.<>' ) );
