@@ -1,7 +1,12 @@
-function digPow( n, p ) {
-  // let arr = n.toString().split('');
-  let result = n.toString().split('').reduce( ( sum, item ) => sum + Math.pow( item, p++ ), 0 );
-  return result % n ? -1 : result / n;
+function findUnique( arr ) {
+  if( arr[ 0 ] == arr[ 1 ] ) {
+    return arr.find( item => item != arr[ 0 ] );
+  } else if( arr[0] == arr[2] ) {
+    return arr[1];
+  } else{
+    return arr[ 0 ];
+  }
 }
 
-console.log( digPow( 46288, 3 ) );
+let arr = [ 1, 1, 1, 2, 1, 1 ];
+console.log( findUnique( arr ) );
