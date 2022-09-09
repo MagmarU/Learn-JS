@@ -1,35 +1,7 @@
-// function countCams( str ) {
-//   let [ countLeftCar, countRightCar, countCam ] = [ 0, 0, 0 ];
-//   let result = 0;
-//   for( let char of str ) {
-//     if( char == '.' ){
-//       countCam++;
-//       result += countLeftCar + countRightCar;
-//     } else if( char == '<' ) {
-//       countLeftCar++;
-//     }
-//     else {
-//       countRightCar++;
-//     }
-//   }
-//   return result;
-// }
-
-function countPhotos( str ) {
-  return countCar( str, '>' ) + countCar( [...str].reverse(), '<' );
+function arrayPlusArray( arr1, arr2 ) {
+  return arr1.concat( arr2 ).reduce( ( sum, item ) => item + sum );
 }
 
-function countCar( road, car ) {
-  let [ result, countCar ] = [ 0, 0 ];
-  for( let char of road ) {
-    if( char == '.' ) {
-      result += countCar;
-    } else if( char == car ) {
-      countCar++;
-    }
-  }
-  return result;
-}
-
-
-console.log( countPhotos( '>>.<>' ) );
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+console.log( arrayPlusArray( arr1, arr2 ) );
