@@ -1,0 +1,10 @@
+table td{
+    border: 1px solid;
+    padding: 2px;
+    font-size: 22px;
+}
+table{
+    
+    border-collapse: separate;
+    border-spacing: 5px;
+}

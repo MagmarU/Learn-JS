@@ -1,47 +1,19 @@
-// function sqInRect( lng, wdth ) {
-//   let area = lng * wdth;
-//   if( lng == wdth ) return null;
-//   let minNum = Math.min( lng, wdth );
-//   let square;
-//   let result = [];
-//   while( area > 0 ) {
-//     square = Math.floor( Math.sqrt( area ) );
-//     if( square >= lng || square >= wdth ) {
-//       square = minNum;
-//     }
-//     result.push( square );
-//     area -= square ** 2;
-//     if( area == 0 ) break;
-//   }
-//   return result;
-// }
+let table = document.createElement( 'table' );
+const body = document.body;
 
-// console.log( sqInRect( 20, 14 ) );
-let perimetr = ( square ) => 4 * square;
-
-function sqInRect( lng, wdth ) {
-  let perimetrMain = 2 * ( lng + wdth );
-  let square;
-  let result = [];
-  while( lng > 0 && wdth > 0 ) {
-    console.log( lng, wdth );
-    
-
-    square = Math.min( lng, wdth );
-    
-
-    result.push( square );
-    perimetrMain -= perimetr( square );
-    if( lng == 0 ) {
-      lng = ( perimetrMain / 2 ) - wdth;
-    } else {
-      wdth = ( perimetrMain / 2 ) - lng;
-    }
-    // let [ lng, wdth ] = [ lng - square, wdth - square ];
-    console.log( lng, wdth );
+for( let i = 1; i <= 5; i++ ) {
+  let currTr = document.createElement( 'tr' );
+  table.appendChild( currTr );
+  for( let j = 1; j <= 5; j++ ) {
+    let currTd = document.createElement( 'td' );
+    currTr.appendChild( currTd );
+    currTd.innerHTML = `${j}:${i}`;
+    currTr.appendChild( currTd );
   }
-  return result;
-
 }
 
-console.log( sqInRect( 20, 14 ) );
+for( let i = 0; i < 5; i++ ) {
+  let tablerow = table.rows[i].cells[i];
+  tablerow.style.background = 'red';
+}
+body.appendChild( table );
