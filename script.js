@@ -1,46 +1,56 @@
-let i = 0;
-function countNesting( obj ) {
+function createCalendar( elem, year, month ) {
+  let table = document.createElement( 'table' );
+  document.body.append( table );
+
+  let date = new Date( year, month - 1 );
   
-  for( let prop in obj ) {
-    let res = 0;
-    // console.log( prop );
-    if( Object.keys( obj[prop] ).length != 0 ) {
-      // console.log( obj[prop] );
-      // console.log( Object.keys( obj[prop] ).length );
-      res = Object.keys( obj[prop] ).length + countNesting( obj[prop] );
-      i += res;
-      // console.log( i );
-      console.log( prop, i );
-      
-    } else {
-      res = 0;
+  table.append( weekHeader() );
+
+
+  let tr = document.createElement( 'tr' );
+  let counter = 1;
+  for( let i = 1 - date.getDay() + 1; i <= countDays( year, month ); i++ ) {
+    table.append( tr );
+
+    if( i < 1 ) {
+      let td = document.createElement( 'td' );
+      tr.append( td );
+      counter++;
+      continue;
     }
 
-    i = 0;  
-    return res;  
-  }
+    let td = document.createElement( 'td' );
+    td.textContent = i;
+    tr.append( td );
 
-  // console.log( i );
-  
+    if( counter % 7 == 0 ) {
+      tr = document.createElement( 'tr' );
+      table.append( tr );
+    }
+    counter++;
+  }
+  elem.append( table );
 }
 
-let data = {
-  "Рыбы": {
-    "форель": {},
-    "лосось": {}
-  },
+function weekHeader() {
+  let week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
-  "Деревья": {
-    "Огромные": {
-      "секвойя": {},
-      "дуб": {},
-      "вишня": {}
-    },
-    "Цветковые": {
-      "яблоня": {},
-      "магнолия": {},
-    }
+  let tr = document.createElement( 'tr' );
+
+  for( let prop of week ) {
+    let th = document.createElement( 'th' );
+    th.textContent = prop;
+    tr.append( th );
   }
-};
 
-console.log( countNesting( data ) );
+  return tr;
+}
+
+function countDays( year, month ) {
+  let date = new Date( year, month, 0 );
+  return date.getDate();
+}
+
+
+let elem = document.querySelector('.container');
+createCalendar( elem, 2022, 9 );
