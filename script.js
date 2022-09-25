@@ -1,11 +1,8 @@
-function isEmpty(obj) {
-    let i = 0;
-    for(let key in obj) {
-        i++;
-    }
-    i = i > 0 ? false : true;
-    return i;
+function isEmpty( obj ) {
+  return Object.values( obj ).length > 0 ? false : true;
 }
 
-let user = {};
-alert(isEmpty(user));
+let user = {
+  'dfdf': 1
+};
+console.log(isEmpty(user));
