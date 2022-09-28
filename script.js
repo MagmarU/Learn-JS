@@ -1,8 +1,4 @@
-function isEmpty( obj ) {
-  return Object.values( obj ).length > 0 ? false : true;
-}
-
-let user = {
-  'dfdf': 1
-};
-console.log(isEmpty(user));
+// let body = document.body;
+let ul = document.body.querySelector('ul');
+console.log( ul );
+// let lastLi = document.ul.querySelector('li');
