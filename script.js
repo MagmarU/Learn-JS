@@ -1,8 +1,18 @@
-let table = document.querySelector( 'table' );
+function showNotification( {top, right, html, className} ) {
+  let div = document.createElement( 'div' );
+  div.className = 'notification';
+  if( className ) { div.classList.add( className ) };
 
-let tr = Array.from( table.rows )
-  .slice(1)
-  .sort( (a, b) => a.cells[0].innerHTML < b.cells[0].innerHTML ? -1 : 1 );
+  div.style.top = `${top}px`;
+  div.style.right = `${right}px`;
 
+  div.innerHTML = html;
+  document.body.append( div );
+}
 
-table.tBodies[0].append( ...tr );
+showNotification({
+  top: 10, // 10px от верхней границы окна (по умолчанию 0px)
+  right: 10, // 10px от правого края окна (по умолчанию 0px)
+  html: "Hello!", // HTML-уведомление
+  className: "welcome" // дополнительный класс для div (необязательно)
+});
