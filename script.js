@@ -1,3 +1,12 @@
-let elem = document.body.querySelector( '.text' );
-let scrollBottom = () => elem.scrollHeight - (elem.scrollTop + elem.clientHeight);
-setInterval( () => console.log( scrollBottom() ), 100 );
+let div = document.createElement('div');
+
+div.style.overflowY = 'scroll';
+div.style.width = '50px';
+div.style.height = '50px';
+
+document.body.append(div);
+let scrollWidth = div.offsetWidth - div.clientWidth;
+
+div.remove();
+
+console.log(scrollWidth);
