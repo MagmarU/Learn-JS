@@ -1,12 +1,9 @@
-let div = document.createElement('div');
+const field = document.querySelector( '#field' );
+const ball = document.querySelector('#ball');
+let ballSize = ball.clientHeight / 2;
 
-div.style.overflowY = 'scroll';
-div.style.width = '50px';
-div.style.height = '50px';
-
-document.body.append(div);
-let scrollWidth = div.offsetWidth - div.clientWidth;
-
-div.remove();
-
-console.log(scrollWidth);
+let width = field.clientWidth;
+let height = field.clientHeight;
+console.log( field.offsetLeft )
+ball.style.left = `${(width / 2) - ballSize}px`;
+ball.style.top = `${(height / 2) - ballSize}px`;
