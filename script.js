@@ -1,9 +1,9 @@
-const field = document.querySelector( '#field' );
-const ball = document.querySelector('#ball');
-let ballSize = ball.clientHeight / 2;
-
-let width = field.clientWidth;
-let height = field.clientHeight;
-console.log( field.offsetLeft )
-ball.style.left = `${(width / 2) - ballSize}px`;
-ball.style.top = `${(height / 2) - ballSize}px`;
+let field = document.querySelector( '#field' );
+console.log( field );
+let objProp = field.getBoundingClientRect();
+let oneAngle = [objProp.x, objProp.y];
+let twoAngle = [ oneAngle[0] + objProp.width, oneAngle[1] + objProp.height ];
+let threeAngle = [ objProp.x + field.style, objProp.y + +field.style.borderTop ];
+console.log( objProp );
+console.log( field.clientWidth );
+console.log( threeAngle );
