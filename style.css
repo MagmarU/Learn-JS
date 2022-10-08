@@ -1,3 +1,6 @@
+body{
+  height: 1000px;
+}
 .note {
   position: fixed;
   z-index: 1000;

@@ -1,3 +1,13 @@
+function getCoords(anchor) {
+    let elem = anchor.getBoundingClientRect();
+    return {
+        top: elem.top + window.pageYOffset,
+        right: elem.right + window.pageXOffset,
+        left: elem.left + window.pageXOffset,
+        bottom: elem.bottom + window.pageYOffset
+    };
+
+}
 function positionAT( anchor, position, elem ) {
     let positions = {
         "top": function () {
@@ -15,7 +25,7 @@ function positionAT( anchor, position, elem ) {
     }
     
     elem.style.cssText = 'position: absolute;';
-    let coords = anchor.getBoundingClientRect();
+    let coords = getCoords( anchor );
     positions[position]();
 }
 
