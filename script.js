@@ -10,17 +10,29 @@ function getCoords(anchor) {
 }
 function positionAT( anchor, position, elem ) {
     let positions = {
-        "top": function () {
+        "top-out": function () {
             elem.style.left = coords.left + 'px';
-            elem.style.top = coords.top - elem.clientHeight + 'px';
+            elem.style.top = coords.top - elem.offsetHeight + 'px';
         },
-        "right": function () {
+        "right-out": function () {
             elem.style.left = coords.right + 'px';
             elem.style.top = coords.top + 'px';
         },
-        "bottom": function () {
+        "bottom-out": function () {
             elem.style.left = coords.left + 'px';
             elem.style.top = coords.bottom + 'px';
+        },
+        "top-in": function() {
+            elem.style.left = coords.left + 'px';
+            elem.style.top = coords.top + 'px';
+        },
+        "right-in": function() {
+            elem.style.left = coords.right - elem.offsetWidth + 'px';
+            elem.style.top = coords.top + 'px';
+        },
+        "bottom-in": function() {
+            elem.style.left = coords.left + 'px';
+            elem.style.top = coords.bottom - elem.offsetHeight + 'px';
         }
     }
     
@@ -32,4 +44,4 @@ function positionAT( anchor, position, elem ) {
 let elem = document.querySelector('.message');
 let anchor = document.querySelector('blockquote');
 
-positionAT(anchor, "right", elem);
+positionAT(anchor, "top-out", elem);
