@@ -1,7 +1,11 @@
-let pane = document.querySelectorAll('.pane');
-let button = '<button class="remove-button">[x]</button>';
-
-for( let elem of pane ) {
-    elem.insertAdjacentHTML( 'afterbegin', '<button class="remove-button">[x]</button>' );
-    elem.firstChild.onclick = () => elem.remove();
+let div = document.querySelector('.gallery');
+let pics = document.querySelector('.pics');
+console.log(pics)
+const leftButt = div.firstElementChild;
+const rightBut = div.lastElementChild;
+leftButt.onclick = function() {
+    pics.scrollLeft -= 390;
+}
+rightBut.onclick = function() {
+    pics.scrollLeft += 390;
 }
