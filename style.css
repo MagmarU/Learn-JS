@@ -1,54 +1,37 @@
-.arrow {
-  padding: 0;
-  background: #ddd;
-  border-radius: 15px;
-  border: 1px solid gray;
-  font-size: 24px;
-  line-height: 24px;
-  color: #444;
-  display: block;
+body {
+  margin: 10px auto;
+  width: 470px;
 }
 
-.arrow:focus {
-  outline: none;
-}
-
-.arrow:hover {
-  background: #ccc;
-  cursor: pointer;
-}
-.pics{
-    /* float: left; */
-    width: 390px;
-    height: auto;  
-    overflow: hidden;
-    overflow-x: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    transition: margin-left .25s;
-    
-}
-.gallery{
-  display: flex;
-  align-items: center;
-  
-}
-
-ul {
-  height: 130px;
-  width: auto;
+h3 {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0;
+  padding-bottom: .3em;
+  padding-right: 20px;
+  font-size: 1.1em;
 }
 
-ul img {
-  width: 130px;
-  height: 130px;
-  display: block; /* убираем пустое место вокруг картинок */
+p {
+  margin: 0;
+  padding: 0 0 .5em;
 }
 
-ul li {
-  display: inline-block; /* убираем пустое место между элементами списка */
+.pane {
+  background: #edf5e1;
+  padding: 10px 20px 10px;
+  border-top: solid 2px #c4df9b;
+  position: relative;
+}
+
+.remove-button {
+  position: absolute;
+  font-size: 110%;
+  top: 0;
+  color: darkred;
+  right: 10px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
