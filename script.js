@@ -1,17 +1,25 @@
-let table = document.querySelector( 'table' );
+function getCoords(anchor) {
+    let elem = anchor.getBoundingClientRect();
+    return {
+        top: elem.top + window.pageYOffset,
+        right: elem.right + window.pageXOffset,
+        left: elem.left + window.pageXOffset,
+        bottom: elem.bottom + window.pageYOffset
+    };
 
-let handler = {
-    number(tr) {
-        return tr.sort( ( a, b ) => +a.cells[0].innerHTML - +b.cells[0].innerHTML );
-    }, 
-    string(tr){
-        return tr.sort( ( a, b ) => a.cells[1].innerHTML < b.cells[1].innerHTML ? -1 : 1 );
-    }
 }
 
-table.addEventListener( 'click', function(event) {
-    let tr = Array.from( table.rows ).slice(1);
-    let result = handler[event.target.dataset.type](tr);
+document.addEventListener('mouseover', function (event) {
+    if (!event.target.dataset.tooltip) return;
+    let div = document.createElement('span');
+    
+    div.style.cssText = 'display: absolute';
+    document.body.append( div );
+    let coords = getCoords( event.target );
+    console.log( coords );
+    div.innerHTML = event.target.dataset.tooltip;
 
-    table.tBodies[0].append( ...result );
+    // div.style.left = coords.left + 'px';
+    // div.style.top = coords.top - div.offsetHeight + 'px';
+    
 });
