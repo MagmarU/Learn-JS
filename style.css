@@ -4,7 +4,6 @@ body {
 }
 
 .tooltip {
-  /* немного стилизуем подсказку, можете использовать свои стили вместо этих */
   position: fixed;
   padding: 10px 20px;
   border: 1px solid #b3c9ce;
