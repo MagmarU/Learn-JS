@@ -1,46 +1,31 @@
-let i = 0;
-function countNesting( obj ) {
+// function arrPlusOne( arr ) {
+//   // arr.reverse();
+//   for( let elem = arr.length - 1; elem > -1; elem-- ) {
+//     arr[elem]++;
+//     if( arr[elem] < 10 ) break;
+//     arr[elem] = 0;
+//     arr.unshift(1);
+//     console.log( arr[elem] );
+//   }
+//   return arr;
+//   // console.log( arr );
   
-  for( let prop in obj ) {
-    let res = 0;
-    // console.log( prop );
-    if( Object.keys( obj[prop] ).length != 0 ) {
-      // console.log( obj[prop] );
-      // console.log( Object.keys( obj[prop] ).length );
-      res = Object.keys( obj[prop] ).length + countNesting( obj[prop] );
-      i += res;
-      // console.log( i );
-      console.log( prop, i );
-      
-    } else {
-      res = 0;
-    }
 
-    i = 0;  
-    return res;  
-  }
+//   // arr;
 
-  // console.log( i );
-  
+//   // let res = String(+arr.join('') + 1).split('');
+//   // return res.map( item => +item );
+// }
+
+// let arr = [9, 9, 9, 9];
+// // console.log( arr.join('') );
+// console.log( arrPlusOne( arr ) );
+
+reverse = function(array) {
+  let res = [];
+  array.map( item => res.unshift(item) );
+  return res;
 }
 
-let data = {
-  "Рыбы": {
-    "форель": {},
-    "лосось": {}
-  },
-
-  "Деревья": {
-    "Огромные": {
-      "секвойя": {},
-      "дуб": {},
-      "вишня": {}
-    },
-    "Цветковые": {
-      "яблоня": {},
-      "магнолия": {},
-    }
-  }
-};
-
-console.log( countNesting( data ) );
+let arr = [1, 2, 3];
+console.log( reverse( arr ) );
