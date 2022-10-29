@@ -1,7 +1,10 @@
-document.addEventListener( 'click', function( event ) {
-  let eventName = event.target;
-  if( eventName.closest('a') ) {
-    if(confirm(`Перейти на страницу ${eventName.getAttribute('href')} ?`) ) return;
-    event.preventDefault();
-  } 
+let largeImg = document.querySelector('#largeImg');
+
+document.addEventListener('click', function(event) {
+    let eventName = event.target;
+    if( eventName.closest('a') ) {
+        let parent = eventName.parentNode;
+        largeImg.src = parent.href;
+        event.preventDefault();
+    }
 });

@@ -1,10 +1,15 @@
-table td{
-    border: 1px solid;
-    padding: 2px;
-    font-size: 22px;
+ul li{ 
+    display: inline;
+    margin-left: 8.5px;
 }
-table{
-    
-    border-collapse: separate;
-    border-spacing: 5px;
+ul li:first-child {
+    margin: 0;
+}
+ul{
+    padding: 0;
+    display: inline;
+}
+#largeImg{
+    width: 550px;
+    height: 400px;
 }
