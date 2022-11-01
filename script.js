@@ -1,10 +1,13 @@
-let largeImg = document.querySelector('#largeImg');
+let rabbit = document.querySelector('#rabbit');
+function hide() {
+    let event = new CustomEvent("hide", {
+        cancelable: true
+    });
+    !rabbit.dispatchEvent(event) ? alert( 'Действие отменено брузером' ) : rabbit.hidden = !rabbit.hidden;
+}
 
-document.addEventListener('click', function(event) {
-    let eventName = event.target;
-    if( eventName.closest('a') ) {
-        let parent = eventName.parentNode;
-        largeImg.src = parent.href;
+rabbit.addEventListener('hide', function(event) {
+    if( confirm('Вызвать PreventDefault?') ) {
         event.preventDefault();
     }
-});
+})
