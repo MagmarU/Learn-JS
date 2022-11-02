@@ -1,15 +1,6 @@
-ul li{ 
-    display: inline;
-    margin-left: 8.5px;
+.selected {
+    background: #0f0;
 }
-ul li:first-child {
-    margin: 0;
-}
-ul{
-    padding: 0;
-    display: inline;
-}
-#largeImg{
-    width: 550px;
-    height: 400px;
+li {
+    cursor: pointer;
 }

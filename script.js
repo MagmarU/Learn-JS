@@ -1,13 +1,22 @@
-let rabbit = document.querySelector('#rabbit');
-function hide() {
-    let event = new CustomEvent("hide", {
-        cancelable: true
-    });
-    !rabbit.dispatchEvent(event) ? alert( 'Действие отменено брузером' ) : rabbit.hidden = !rabbit.hidden;
+let ul = document.querySelector('#ul');
+let selectedLi;
+ul.addEventListener( 'click', function(event) {
+    if( event.target.tagName != 'LI' ) return;
+    let target = event.target;
+    if( event.ctrlKey || event.metaKey ) {
+        addhighLight( target );
+    } else highLight( target );
+    
+});
+
+ul.addEventListener( 'mousedown', (event) => event.preventDefault() );
+
+function addhighLight( li ) {
+    li.classList.toggle('selected');
 }
 
-rabbit.addEventListener('hide', function(event) {
-    if( confirm('Вызвать PreventDefault?') ) {
-        event.preventDefault();
-    }
-})
+function highLight( li ) {
+    let selectedLi = document.querySelectorAll( '.selected' );
+    selectedLi.forEach( item => item.classList.remove('selected') );
+    li.classList.add( 'selected' );
+}
