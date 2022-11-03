@@ -1,12 +1,11 @@
-let ul = document.querySelector('#ul');
-let selectedLi;
+let [ul, selectedLi] = [document.querySelector('#ul')];
+
 ul.addEventListener( 'click', function(event) {
     if( event.target.tagName != 'LI' ) return;
     let target = event.target;
     if( event.ctrlKey || event.metaKey ) {
         addhighLight( target );
-    } else highLight( target );
-    
+    } else highLight( target ); 
 });
 
 ul.addEventListener( 'mousedown', (event) => event.preventDefault() );
