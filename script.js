@@ -1,21 +1,50 @@
-let [ul, selectedLi] = [document.querySelector('#ul')];
-
-ul.addEventListener( 'click', function(event) {
-    if( event.target.tagName != 'LI' ) return;
-    let target = event.target;
-    if( event.ctrlKey || event.metaKey ) {
-        addhighLight( target );
-    } else highLight( target ); 
-});
-
-ul.addEventListener( 'mousedown', (event) => event.preventDefault() );
-
-function addhighLight( li ) {
-    li.classList.toggle('selected');
+function positionDiv(div, place, coords, target) { 
+    
+    let position = {
+        top() {
+            div.style.top = coords.top - div.offsetHeight + window.pageYOffset - 5 + 'px';
+            this.left();
+        },
+        down() {
+            div.style.top = coords.bottom + window.pageYOffset + 5 + 'px';
+            this.left();
+        },
+        left() {
+            let left = coords.left + target.clientWidth / 2 - div.clientWidth/2;
+            div.style.left = left < 0 ? '0px' : `${left}px`;
+        }
+    }
+    position[place]();
 }
 
-function highLight( li ) {
-    let selectedLi = document.querySelectorAll( '.selected' );
-    selectedLi.forEach( item => item.classList.remove('selected') );
-    li.classList.add( 'selected' );
+let dataTooltips = document.querySelectorAll( '[data-tooltip]' );
+dataTooltips.forEach( item => {
+    item.addEventListener('mouseenter', function( event ) {
+        handler( event );
+    });
+
+    item.addEventListener( 'mouseleave', function( event ) {
+        handlerForLeave();
+    } )
+});
+
+function handler( event ) {
+    let div = document.querySelector( '.tooltip' );
+    div.style.cssText = 'position: absolute';
+    document.body.append(div);
+    let coords = event.target.getBoundingClientRect();
+
+    div.innerHTML = event.target.dataset.tooltip;
+
+    if (coords.top - 5 - div.offsetHeight < 0) {
+        positionDiv(div, 'down', coords, event.target)
+    } else {
+        positionDiv(div, 'top', coords, event.target)
+    };
+
+};
+
+function handlerForLeave() {
+    let div = document.querySelector('.tooltip');
+    div.style.cssText = 'display: none';
 }
