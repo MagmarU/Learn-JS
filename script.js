@@ -10,7 +10,7 @@ function positionDiv(div, place, coords, target) {
             this.left();
         },
         left() {
-            let left = coords.left + target.clientWidth / 2 - div.clientWidth/2;
+            let left = coords.left + target.offsetWidth / 2 - div.offsetWidth / 2;
             div.style.left = left < 0 ? '0px' : `${left}px`;
         }
     }
@@ -18,29 +18,28 @@ function positionDiv(div, place, coords, target) {
 }
 
 let dataTooltips = document.querySelectorAll( '[data-tooltip]' );
+
 dataTooltips.forEach( item => {
-    item.addEventListener('mouseenter', function( event ) {
-        handler( event );
+    item.addEventListener('mouseover', ( event ) => {
+        const ev = event.target.closest('[data-tooltip');
+        if( ev ) handler( ev );
     });
 
-    item.addEventListener( 'mouseleave', function( event ) {
-        handlerForLeave();
-    } )
+    item.addEventListener( 'mouseout', () => handlerForLeave() );
 });
 
 function handler( event ) {
+    
     let div = document.querySelector( '.tooltip' );
     div.style.cssText = 'position: absolute';
+    div.innerHTML = event.dataset.tooltip;
     document.body.append(div);
-    let coords = event.target.getBoundingClientRect();
 
-    div.innerHTML = event.target.dataset.tooltip;
+    let coords = event.getBoundingClientRect();
 
-    if (coords.top - 5 - div.offsetHeight < 0) {
-        positionDiv(div, 'down', coords, event.target)
-    } else {
-        positionDiv(div, 'top', coords, event.target)
-    };
+    coords.top - 5 - div.offsetHeight < 0 ? 
+    positionDiv( div, 'down', coords, event ) : 
+    positionDiv( div, 'top', coords, event );
 
 };
 
