@@ -1,16 +1,12 @@
-let arr = [1,2,3,4,5,6,7,8,9];
+let users = [
+    { name: "John", age: 20, surname: "Johnson" },
+    { name: "Pete", age: 18, surname: "Peterson" },
+    { name: "Ann", age: 19, surname: "Hathaway" }
+];
 
-function inBetween(a, b) {
-    return function(num) {
-        return num >= a && num <= b;
-    };
-};
-
-function inArray(arr) {
-    return function(num) {
-        return arr.includes( num );
-    }
+function byField(fieldName) {
+    return ( a, b ) => a[fieldName] > b[fieldName] ? 1 : -1;
 }
 
-console.log(arr.filter(inBetween(5,7)) );
-console.log( arr.filter(inArray([1,10,8])) );
+users.sort( byField('surname') );
+console.log( users );
