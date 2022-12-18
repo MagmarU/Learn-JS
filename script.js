@@ -1,12 +1,19 @@
-let users = [
-    { name: "John", age: 20, surname: "Johnson" },
-    { name: "Pete", age: 18, surname: "Peterson" },
-    { name: "Ann", age: 19, surname: "Hathaway" }
-];
+function makeArmy() {
+    let shooters = [];
+  
+    for( let i = 0; i < 10; i++ ) {
 
-function byField(fieldName) {
-    return ( a, b ) => a[fieldName] > b[fieldName] ? 1 : -1;
-}
-
-users.sort( byField('surname') );
-console.log( users );
+        console.log( i );
+      let shooter = function() {
+        alert( i );
+      };
+      shooters.push(shooter);
+    }
+    console.log( shooters );
+    return shooters;
+  }
+  
+  let army = makeArmy();
+  
+  army[0]();
+  army[5]();
