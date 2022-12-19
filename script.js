@@ -1,31 +1,45 @@
-// function arrPlusOne( arr ) {
-//   // arr.reverse();
-//   for( let elem = arr.length - 1; elem > -1; elem-- ) {
-//     arr[elem]++;
-//     if( arr[elem] < 10 ) break;
-//     arr[elem] = 0;
-//     arr.unshift(1);
-//     console.log( arr[elem] );
-//   }
-//   return arr;
-//   // console.log( arr );
-  
+function sumDigPow(a, b) {
+  let range = {
+    from: a,
+    to: b,
 
-//   // arr;
+    [Symbol.iterator]() {
+      this.current = this.from;
+      return this;
+    },
 
-//   // let res = String(+arr.join('') + 1).split('');
-//   // return res.map( item => +item );
-// }
+    next() {
+      if (this.current <= this.to) {
+        return {
+          done: false,
+          value: this.current++
+        };
+      } else {
+        return {
+          done: true,
+        };
+      }
+    }
+  };
 
-// let arr = [9, 9, 9, 9];
-// // console.log( arr.join('') );
-// console.log( arrPlusOne( arr ) );
+  let resultArr = [];
+  for( let num of range ) {
+    if (checkOnPowSum( num )) {
+      resultArr.push( num );
+    }
+  }
+  return resultArr;
 
-reverse = function(array) {
-  let res = [];
-  array.map( item => res.unshift(item) );
-  return res;
 }
 
-let arr = [1, 2, 3];
-console.log( reverse( arr ) );
+function checkOnPowSum(num) {
+  let n = num.toString().split('');
+  let sum = 0;
+  for (let elem in n) {
+
+    sum += Math.pow(n[elem], ++elem);
+
+  }
+  return sum === num;
+}
+console.log(sumDigPow(1, 15));
