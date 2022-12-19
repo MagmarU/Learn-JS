@@ -1,45 +1,14 @@
-function sumDigPow(a, b) {
-  let range = {
-    from: a,
-    to: b,
-
-    [Symbol.iterator]() {
-      this.current = this.from;
-      return this;
-    },
-
-    next() {
-      if (this.current <= this.to) {
-        return {
-          done: false,
-          value: this.current++
-        };
-      } else {
-        return {
-          done: true,
-        };
-      }
-    }
-  };
-
-  let resultArr = [];
-  for( let num of range ) {
-    if (checkOnPowSum( num )) {
-      resultArr.push( num );
-    }
-  }
-  return resultArr;
-
-}
-
-function checkOnPowSum(num) {
-  let n = num.toString().split('');
+function bouncingBall(h,  bounce,  window) {
+  if( h <= 0 || bounce <= 0 || bounce >= 1 || window < h ) return -1;
   let sum = 0;
-  for (let elem in n) {
-
-    sum += Math.pow(n[elem], ++elem);
-
+  while( h >= 0 ) {
+    sum++
+    h = h * bounce;
+    if( h > window ) sum++;
+    else break;
   }
-  return sum === num;
+  return sum;
+  // console.log( sum );
 }
-console.log(sumDigPow(1, 15));
+
+console.log( bouncingBall( 10, 0.6, 10 ) );
