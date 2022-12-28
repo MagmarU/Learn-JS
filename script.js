@@ -1,29 +1,16 @@
-function work( a, b ) {
-    return a + b;
+function f( x ) {
+    console.log( x );
 }
-
-function spy( func ) {
-    function wrapper( ...args ) {
-
-        wrapper.calls.push( args );
+function delay( func, ms ) {
+    function context(args) {
         return func.apply( this, args );
-        
     }
-    wrapper.calls = [];
-
-    return wrapper;
-
+    return function() {
+        setTimeout( context, ms, arguments );
+    }
 }
 
-function hash( args ) {
-    return [].join.call(args);
-}
+let f1000 = delay( f, 1000 );
+let f1500 = delay( f, 1500 );
 
-work = spy( work );
-
-work( 1, 2 );
-work( 3, 5 );
-
-for (let args of work.calls) {
-    // console.log( args );
-}
+f1000('test');
