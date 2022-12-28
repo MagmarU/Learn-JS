@@ -1,19 +1,29 @@
-function makeArmy() {
-    let shooters = [];
-  
-    for( let i = 0; i < 10; i++ ) {
+function work( a, b ) {
+    return a + b;
+}
 
-        console.log( i );
-      let shooter = function() {
-        alert( i );
-      };
-      shooters.push(shooter);
+function spy( func ) {
+    function wrapper( ...args ) {
+
+        wrapper.calls.push( args );
+        return func.apply( this, args );
+        
     }
-    console.log( shooters );
-    return shooters;
-  }
-  
-  let army = makeArmy();
-  
-  army[0]();
-  army[5]();
+    wrapper.calls = [];
+
+    return wrapper;
+
+}
+
+function hash( args ) {
+    return [].join.call(args);
+}
+
+work = spy( work );
+
+work( 1, 2 );
+work( 3, 5 );
+
+for (let args of work.calls) {
+    // console.log( args );
+}
