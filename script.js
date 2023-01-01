@@ -1,16 +1,19 @@
-function f( x ) {
-    console.log( x );
-}
-function delay( func, ms ) {
-    function context(args) {
-        return func.apply( this, args );
-    }
+function debounce( func, ms ) {
+    let isCoolDown = false;
     return function() {
-        setTimeout( context, ms, arguments );
+        if( isCoolDown ) return;
+
+        func.apply( this, arguments );
+        isCoolDown = true;
+        setTimeout( () => isCoolDown = false, ms );
     }
 }
 
-let f1000 = delay( f, 1000 );
-let f1500 = delay( f, 1500 );
+let f = debounce( console.log , 1000);
 
-f1000('test');
+f(1);
+f(2); 
+
+setTimeout( () => f(3), 100);
+setTimeout( () => f(4), 1100);
+setTimeout( () => f(5), 1500);
