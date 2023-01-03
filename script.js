@@ -1,19 +1,31 @@
-function debounce( func, ms ) {
+function throttle( f, ms ) {
     let isCoolDown = false;
-    return function() {
-        if( isCoolDown ) return;
-
-        func.apply( this, arguments );
+    let accumulator;
+    function wrapper() {
+        if( isCoolDown ) {
+            accumulator = arguments;
+            // Тут должен ещё сохраняться контекст.
+            return;
+        };
+        
         isCoolDown = true;
-        setTimeout( () => isCoolDown = false, ms );
+        f.apply( this, arguments )
+        setTimeout( () => {
+            isCoolDown = false;
+            f.apply( this, accumulator );
+        }, ms );
     }
+
+    return wrapper;
 }
 
-let f = debounce( console.log , 1000);
+function f(a) {
+    console.log(a)
+  }
+  
+  let f1000 = throttle(f, 1000);
+  
+  f1000(1); 
+  f1000(2); 
+  f1000(3); 
 
-f(1);
-f(2); 
-
-setTimeout( () => f(3), 100);
-setTimeout( () => f(4), 1100);
-setTimeout( () => f(5), 1500);
