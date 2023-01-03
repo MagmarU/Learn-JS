@@ -1,31 +1,20 @@
-function throttle( f, ms ) {
-    let isCoolDown = false;
-    let accumulator;
-    function wrapper() {
-        if( isCoolDown ) {
-            accumulator = arguments;
-            // Тут должен ещё сохраняться контекст.
-            return;
-        };
-        
-        isCoolDown = true;
-        f.apply( this, arguments )
-        setTimeout( () => {
-            isCoolDown = false;
-            f.apply( this, accumulator );
-        }, ms );
-    }
-
-    return wrapper;
-}
-
-function f(a) {
-    console.log(a)
+function askPassword(ok, fail) {
+    let password = prompt("Password?", '');
+    if (password == "rockstar") ok();
+    else fail();
   }
   
-  let f1000 = throttle(f, 1000);
+  let user = {
+    name: 'Вася',
   
-  f1000(1); 
-  f1000(2); 
-  f1000(3); 
-
+    loginOk() {
+      alert(`${this.name} logged in`);
+    },
+  
+    loginFail() {
+      alert(`${this.name} failed to log in`);
+    },
+  
+  };
+  
+askPassword(user, user.loginOk.bind( user ), user.loginFail.bind( user ));
