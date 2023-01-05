@@ -1,21 +1,21 @@
-let head = {
-  glasses: 1,
+let hamster = {
+  eat( food ) {
+    this.stomach.push( food );
+  }
 };
 
-let table = {
-  pen: 3,
-  __proto__: head,
+let speedy = {
+  stomach: [],
+  __proto__: hamster,
+}
+
+let lazy = {
+  stomach: [],
+  __proto__: hamster,
 };
 
-let bed = {
-  sheet: 1,
-  pillow: 2,
-  __proto__: table,
-};
-
-let pockets = {
-  money: 2000,
-  __proto__: bed
-};
-
-console.log( bed.glasses );
+speedy.eat( "apple" );
+speedy.eat( 'cucumber' );
+console.log( speedy.stomach );
+console.log( lazy.stomach );
+console.log( hamster.stomach );
