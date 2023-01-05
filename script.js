@@ -1,17 +1,21 @@
-function askPassword(ok, fail) {
-    let password = prompt("Password?", '');
-    if (password == "rockstar") ok();
-    else fail();
-}
-  
-let user = {
-  name: 'John',
-
-  login(result) {
-    alert( this.name + (result ? ' logged in' : ' failed to log in') );
-  }
+let head = {
+  glasses: 1,
 };
-  
-// askPassword(user.login.bind( user, true ), user.login.bind( user, false )); // ?
 
-console.log( Object.getOwnPropertyDescriptors( user ) );
+let table = {
+  pen: 3,
+  __proto__: head,
+};
+
+let bed = {
+  sheet: 1,
+  pillow: 2,
+  __proto__: table,
+};
+
+let pockets = {
+  money: 2000,
+  __proto__: bed
+};
+
+console.log( bed.glasses );
