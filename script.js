@@ -1,21 +1,10 @@
-let hamster = {
-  eat( food ) {
-    this.stomach.push( food );
-  }
-};
-
-let speedy = {
-  stomach: [],
-  __proto__: hamster,
+function Obj(name) {
+    this.value = 5;
+    this.name = name;
 }
 
-let lazy = {
-  stomach: [],
-  __proto__: hamster,
-};
+let obj = new Obj( 'Peter' );
+let obj2 = new obj.constructor( 'Anna' );
 
-speedy.eat( "apple" );
-speedy.eat( 'cucumber' );
-console.log( speedy.stomach );
-console.log( lazy.stomach );
-console.log( hamster.stomach );
+console.log( obj );
+console.log( obj2 );
