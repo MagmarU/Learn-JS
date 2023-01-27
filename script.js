@@ -1,10 +1,12 @@
-function Obj(name) {
-    this.value = 5;
-    this.name = name;
+Function.prototype.defer = function(ms) {
+    return function(...args) {
+        setTimeout(() => {
+            f.apply( this, args );
+        }, ms);
+    }
 }
 
-let obj = new Obj( 'Peter' );
-let obj2 = new obj.constructor( 'Anna' );
-
-console.log( obj );
-console.log( obj2 );
+function f( ...args ) {
+    console.log(args.reduce( (result, item) => item + result));
+};
+f.defer(1000)(1, 2, 4);
