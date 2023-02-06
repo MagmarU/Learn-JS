@@ -1,12 +1,16 @@
-Function.prototype.defer = function(ms) {
-    return function(...args) {
-        setTimeout(() => {
-            f.apply( this, args );
-        }, ms);
+let dictionary = Object.create(null, {
+    toString : {
+        value() {
+            return Object.keys(this).join();
+        }
     }
+});
+
+dictionary.apple = 'Apple';
+dictionary.__proto__ = 'test';
+
+for( let prop in dictionary ) {
+    console.log( prop );
 }
 
-function f( ...args ) {
-    console.log(args.reduce( (result, item) => item + result));
-};
-f.defer(1000)(1, 2, 4);
+alert( dictionary );
