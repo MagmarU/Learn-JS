@@ -1,16 +1,14 @@
-let dictionary = Object.create(null, {
-    toString : {
-        value() {
-            return Object.keys(this).join();
-        }
-    }
-});
-
-dictionary.apple = 'Apple';
-dictionary.__proto__ = 'test';
-
-for( let prop in dictionary ) {
-    console.log( prop );
+function Rabbit(name) {
+    this.name = name;
+}
+Rabbit.prototype.sayHi = function() {
+    console.log( this.name );
 }
 
-alert( dictionary );
+let rabbit = new Rabbit('George');
+
+console.log( Rabbit.prototype );
+rabbit.sayHi();
+Rabbit.prototype.sayHi();
+Object.getPrototypeOf(rabbit).sayHi();
+rabbit.__proto__.sayHi();
